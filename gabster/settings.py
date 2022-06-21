@@ -31,6 +31,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    "phonebook.apps.PhonebookConfig",
     "base.apps.BaseConfig",
     "polls.apps.PollsConfig",
     "django.contrib.admin",
