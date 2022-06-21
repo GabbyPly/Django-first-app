@@ -63,3 +63,8 @@ def index(request):
     print("latest_question_list", latest_question_list)
     output = ", ".join([q.question_text for q in latest_question_list])
     return HttpResponse(output)
+
+
+def create_room(request):
+    context = {}
+    return render(request, "polls/room_form.html", context)
