@@ -1,4 +1,4 @@
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.shortcuts import get_object_or_404, render
 from django.urls import reverse
 from django.views import generic
@@ -67,4 +67,15 @@ def index(request):
 
 def create_room(request):
     context = {}
-    return render(request, "polls/room_form.html", context)
+    if request.method == "POST":
+        print("req", request)
+        print("method", request.method)
+        print("body", request.body)
+        print("content_type", request.content_type)
+        print("POST", request.POST)
+        # print("urlconf", request.urlconf) # causes error
+        return render(request, "polls/room_form.html", context)
+    elif request.method == "GET":
+        print("Hey world we're in get now")
+        return render(request, "polls/room_form.html", context)
+    return HttpResponse("What kinda method did they use ???")
