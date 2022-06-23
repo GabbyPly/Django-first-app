@@ -6,6 +6,8 @@ class Contact(models.Model):
     name = models.CharField(max_length=255)
     number = models.CharField(max_length=255, blank=True)
     address = models.CharField(max_length=255, blank=True)
+    owner = models.ForeignKey("auth.User", related_name="contacts", on_delete=models.CASCADE)
+    highlighted = models.TextField()
     # code = models.TextField()
 
     class Meta:

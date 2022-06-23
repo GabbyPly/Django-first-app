@@ -1,14 +1,21 @@
-from django.shortcuts import render
-
-# from django.http import HttpResponse, HttpResponseRedirect
-# from django.shortcuts import get_object_or_404, render
-
-
-def goto(request):
-    context = {}
-    return render(request, "phonebook/goto.html", context)
+from phonebook.models import Contact
+from phonebook.serializers import ContactSerializer
+from rest_framework import generics
 
 
-def homepage(request):
-    context = {}
-    return render(request, "phonebook/index.html", context)
+class ConatctList(generics.ListCreateAPIView):
+    """
+    List all contacts, or create a new contact.
+    """
+
+    queryset = Contact.objects.all()
+    serializer_class = ContactSerializer
+
+
+class ConatctDetail(generics.RetrieveUpdateDestroyAPIView):
+    """
+    Retrieve, update or delete a contact instance.
+    """
+
+    queryset = Contact.objects.all()
+    serializer_class = ContactSerializer
