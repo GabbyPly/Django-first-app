@@ -12,12 +12,12 @@ STYLE_CHOICES = sorted([(item, item) for item in get_all_styles()])
 class Contact(models.Model):
     created = models.DateTimeField(auto_now_add=True, blank=True)
     name = models.CharField(max_length=255)
-    code = models.TextField()
+    code = models.TextField(blank=True)
     linenos = models.BooleanField(default=False)
     language = models.CharField(choices=LANGUAGE_CHOICES, default="python", max_length=100)
     style = models.CharField(choices=STYLE_CHOICES, default="friendly", max_length=100)
     owner = models.ForeignKey("auth.User", related_name="contacts", on_delete=models.CASCADE)
-    highlighted = models.TextField()
+    highlighted = models.TextField(blank=True)
     # code = models.TextField()
     def save(self, *args, **kwargs):
         """
@@ -26,7 +26,7 @@ class Contact(models.Model):
         """
         lexer = get_lexer_by_name(self.language)
         linenos = "table" if self.linenos else False
-        options = {"title": self.name} if self.name else {}
+        options = {"name": self.name} if self.name else {}
         formatter = HtmlFormatter(style=self.style, linenos=linenos, full=True, **options)
         self.highlighted = highlight(self.code, lexer, formatter)
         super().save(*args, **kwargs)
