@@ -4,18 +4,18 @@ from phonebook.models import Contact
 from django.contrib.auth.models import User
 
 
-class UserSerializer(serializers.ModelSerializer):
-    contacts = serializers.PrimaryKeyRelatedField(many=True, queryset=Contact.objects.all())
+class UserSerializer(serializers.HyperlinkedModelSerializer):
+    contacts = serializers.HyperlinkedRelatedField(many=True, view_name="snippet-detail", read_only=True)
 
     class Meta:
         model = User
-        fields = ["id", "username", "contacts"]
+        fields = ["url", "id", "username", "contacts"]
 
 
-class ContactSerializer(serializers.ModelSerializer):
-
+class ContactSerializer(serializers.HyperlinkedModelSerializer):
     owner = serializers.ReadOnlyField(source="owner.username")
+    highlight = serializers.HyperlinkedIdentityField(view_name="contact-highlight", format="html")
 
     class Meta:
         model = Contact
-        fields = ["id", "name", "linenos", "language", "style", "code", "owner", "highlighted"]
+        fields = ["url", "id", "name", "linenos", "language", "style", "code", "owner", "highlighted"]

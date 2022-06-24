@@ -4,6 +4,29 @@ from rest_framework import generics
 from django.contrib.auth.models import User
 from rest_framework import permissions
 from phonebook.permissions import IsOwnerOrReadOnly
+from rest_framework.decorators import api_view
+from rest_framework.response import Response
+from rest_framework.reverse import reverse
+from rest_framework import renderers
+
+
+class ContactHighlight(generics.GenericAPIView):
+    queryset = Contact.objects.all()
+    renderer_classes = [renderers.StaticHTMLRenderer]
+
+    def get(self, request, *args, **kwargs):
+        contact = self.get_object()
+        return Response(contact.highlighted)
+
+
+@api_view(["GET"])
+def api_root(request, format=None):
+    return Response(
+        {
+            "users": reverse("user-list", request=request, format=format),
+            "contacts": reverse("contact-list", request=request, format=format),
+        }
+    )
 
 
 class UserList(generics.ListAPIView):
@@ -26,9 +49,6 @@ class ContactList(generics.ListCreateAPIView):
     permission_classes = [permissions.IsAuthenticatedOrReadOnly]
 
     def perform_create(self, serializer):
-        print("self.request", self.request)
-        print("self.request.__dict__", self.request.__dict__)
-        print("self.request.user", self.request.user)
         serializer.save(owner=self.request.user)
 
 
