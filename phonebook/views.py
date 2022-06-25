@@ -10,15 +10,6 @@ from rest_framework.reverse import reverse
 from rest_framework import renderers
 
 
-class ContactHighlight(generics.GenericAPIView):
-    queryset = Contact.objects.all()
-    renderer_classes = [renderers.StaticHTMLRenderer]
-
-    def get(self, request, *args, **kwargs):
-        contact = self.get_object()
-        return Response(contact.highlighted)
-
-
 @api_view(["GET"])
 def api_root(request, format=None):
     return Response(
@@ -27,6 +18,15 @@ def api_root(request, format=None):
             "contacts": reverse("contact-list", request=request, format=format),
         }
     )
+
+
+class ContactHighlight(generics.GenericAPIView):
+    queryset = Contact.objects.all()
+    renderer_classes = [renderers.StaticHTMLRenderer]
+
+    def get(self, request, *args, **kwargs):
+        contact = self.get_object()
+        return Response(contact.highlighted)
 
 
 class UserList(generics.ListAPIView):
