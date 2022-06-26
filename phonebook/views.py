@@ -8,6 +8,8 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.reverse import reverse
 from rest_framework import renderers
+from rest_framework import viewsets
+from rest_framework.decorators import action
 
 
 @api_view(["GET"])
@@ -20,43 +22,32 @@ def api_root(request, format=None):
     )
 
 
-class ContactHighlight(generics.GenericAPIView):
-    queryset = Contact.objects.all()
-    renderer_classes = [renderers.StaticHTMLRenderer]
+class UserViewSet(viewsets.ReadOnlyModelViewSet):
+    """
+    This viewset automatically provides `list` and `retrieve` actions.
+    """
 
-    def get(self, request, *args, **kwargs):
-        contact = self.get_object()
-        return Response(contact.highlighted)
-
-
-class UserList(generics.ListAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
 
 
-class UserDetail(generics.RetrieveAPIView):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
-
-
-class ContactList(generics.ListCreateAPIView):
+class ContactViewSet(viewsets.ModelViewSet):
     """
-    List all contacts, or create a new contact.
-    """
+    This viewset automatically provides `list`, `create`, `retrieve`,
+    `update` and `destroy` actions.
 
-    queryset = Contact.objects.all()
-    serializer_class = ContactSerializer
-    permission_classes = [permissions.IsAuthenticatedOrReadOnly]
-
-    def perform_create(self, serializer):
-        serializer.save(owner=self.request.user)
-
-
-class ConatctDetail(generics.RetrieveUpdateDestroyAPIView):
-    """
-    Retrieve, update or delete a contact instance.
+    Additionally we also provide an extra `highlight` action.
     """
 
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+
+    # Optional url_path argument
+    @action(detail=True, renderer_classes=[renderers.StaticHTMLRenderer])
+    def highlight(self, request, *args, **kwargs):
+        contact = self.get_object()
+        return Response(contact.highlighted)
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
