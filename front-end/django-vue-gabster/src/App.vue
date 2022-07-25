@@ -1,6 +1,12 @@
 <script setup lang="ts">
-import { RouterLink, RouterView } from "vue-router";
-import HelloWorld from "./components/HelloWorld.vue";
+function updateName(name) {
+  console.log(this);
+  console.log(name);
+}
+// import { RouterLink, RouterView } from 'vue-router';
+// import HelloWorld from "./components/HelloWorld.vue";
+import HelloName from "./components/HelloName.vue";
+import CounterIncrease from "./components/CounterIncrease.vue";
 </script>
 
 <template>
@@ -12,10 +18,15 @@ import HelloWorld from "./components/HelloWorld.vue";
       width="125"
       height="125"
     />
+    <input type="text" v-model="myInput" />
+    <button @click="updateName(myInput)">Submit</button>
+    <HelloName />
+    <CounterIncrease />
+  </header>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
+  <!-- <header>
+      <div class="wrapper">
+        <HelloWorld msg="You did it!" />
       <nav>
         <RouterLink to="/">Home</RouterLink>
         <RouterLink to="/about">About</RouterLink>
@@ -23,10 +34,14 @@ import HelloWorld from "./components/HelloWorld.vue";
     </div>
   </header>
 
-  <RouterView />
+  <RouterView /> -->
 </template>
 
 <style scoped>
+* {
+  margin: 1rem;
+}
+
 header {
   line-height: 1.5;
   max-height: 100vh;
