@@ -1,11 +1,13 @@
 <template>
-  <div
-    class="margin uni"
-    :key="`name_${uni.name}_site_${uni?.web_pages?.[0]}`"
-    v-for="uni in universities"
-  >
-    <h3>{{ uni.name }}</h3>
-    <i @click="deleteUny(uni.name)" class="fas fa-times"></i>
+  <div class="uni">
+    <div
+      class="margin"
+      :key="`name_${uni.name}_site_${uni?.web_pages?.[0]}`"
+      v-for="uni in universities"
+    >
+      <h3>{{ uni.name }}</h3>
+      <i @click="deleteUny(uni.name)" class="fas fa-times"></i>
+    </div>
   </div>
 </template>
 
@@ -30,9 +32,8 @@ template {
   justify-content: center;
 }
 i {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  width: 5%;
+  font-size: 3rem;
 }
 .fas {
   color: red;
@@ -40,7 +41,7 @@ i {
 
 .uni {
   display: flex;
-  flex-wrap: wrap-reverse;
+  flex-direction: column;
 }
 
 .margin {

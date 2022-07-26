@@ -20,6 +20,7 @@ export default {
       this.$data.unis = allUnis;
     },
     deleteUny(unyToDelete) {
+      confirm(`Are you sure you want to delete ${unyToDelete}?`);
       this.$data.unis = this.$data.unis.filter(
         (uny) => uny.name !== unyToDelete
       );
