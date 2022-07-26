@@ -4,7 +4,7 @@
     <img alt="Vue logo" src="./assets/logo.png" />
     <h1>Hello World</h1>
     <Button @isr-uni="loadUnis" />
-    <UniversitiesList :universities="unis" />
+    <UniversitiesList @delete-uny="deleteUny" :universities="unis" />
   </div>
 </template>
 
@@ -16,8 +16,13 @@ import UniversitiesList from "./components/UniversitiesList.vue";
 export default {
   name: "App",
   methods: {
-    loadUnis(data) {
-      this.$data.unis = data;
+    loadUnis(allUnis) {
+      this.$data.unis = allUnis;
+    },
+    deleteUny(unyToDelete) {
+      this.$data.unis = this.$data.unis.filter(
+        (uny) => uny.name !== unyToDelete
+      );
     },
   },
   components: {
@@ -43,3 +48,10 @@ export default {
   margin-top: 60px;
 }
 </style>
+/* /* import the fontawesome core */ import { library } from
+'@fortawesome/fontawesome-svg-core' /* import font awesome icon component */
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome' /* import
+specific icons */ import { faUserSecret } from
+'@fortawesome/free-solid-svg-icons' /* add icons to the library */
+library.add(faUserSecret) createApp(App) .component('font-awesome-icon',
+FontAwesomeIcon) .mount('#app') */
