@@ -3,28 +3,32 @@
   <div id="root">
     <img alt="Vue logo" src="./assets/logo.png" />
     <h1>Hello World</h1>
-    <Button @isr-uni="loadUnis" :universities="unis" />
+    <Button @isr-uni="loadUnis" />
+    <UniversitiesList :universities="unis" />
   </div>
 </template>
 
 <script>
 // import HelloWorld from "./components/HelloWorld.vue";
 import Button from "./components/Button.vue";
+import UniversitiesList from "./components/UniversitiesList.vue";
 
 export default {
   name: "App",
   methods: {
     loadUnis(data) {
-      console.log("loadUnis func", data);
       this.$data.unis = data;
     },
   },
   components: {
     // HelloWorld,
     Button,
+    UniversitiesList,
   },
   data() {
-    return { unis: [] };
+    return {
+      unis: [],
+    };
   },
 };
 </script>

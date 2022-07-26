@@ -1,5 +1,7 @@
 <template>
-  <button @click="getUniversities" class="btn">Click me please</button>
+  <button @click="getUniversities" class="btn">
+    Click me to get universities
+  </button>
 </template>
 
 <script>
