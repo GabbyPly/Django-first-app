@@ -27,17 +27,17 @@ export default {
 
 <style>
 * {
-  background-color: rosybrown;
+  /* background-color: rosybrown; */
 }
 
 #root {
-  background-color: darksalmon;
+  /* background-color: darksalmon; */
   height: 90vh;
 }
 
 footer {
   margin-top: 1rem;
-  background-color: darkseagreen;
+  /* background-color: darkseagreen; */
 }
 
 #app {
