@@ -1,16 +1,20 @@
 <template>
-  <div id="root">
-    <h1>Hello World - later changed to Header component</h1>
-    <nav>
-      <router-link to="/home">Home</router-link> |
-      <router-link to="/Universities">Universities</router-link> |
-      <router-link to="/about">About</router-link>
-      <img alt="Vue logo" src="./assets/logo.png" />
-      <!-- <Button @isr-uni="loadUnis" />
-      <UniversitiesList @delete-uny="deleteUny" :universities="unis" /> -->
-    </nav>
-    <router-view />
-  </div>
+  <v-app>
+    <v-main>
+      <div id="root">
+        <h1>Hello World - later changed to Header component</h1>
+        <nav>
+          <router-link to="/home">Home</router-link> |
+          <router-link to="/Universities">Universities</router-link> |
+          <router-link to="/about">About</router-link>
+          <img alt="Vue logo" src="./assets/logo.png" />
+          <!-- <Button @isr-uni="loadUnis" />
+          <UniversitiesList @delete-uny="deleteUny" :universities="unis" /> -->
+        </nav>
+        <router-view />
+      </div>
+    </v-main>
+  </v-app>
 </template>
 
 <script>
