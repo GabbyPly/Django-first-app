@@ -1,7 +1,19 @@
 import { createRouter, createWebHistory } from "vue-router";
 import UniversitiesView from "../views/UniversitiesView.vue";
+import HomeView from "../views/HomeView.vue";
+import BlogPostView from "../views/BlogPostView.vue";
 
 const routes = [
+  {
+    path: "/home",
+    name: "home",
+    component: HomeView,
+  },
+  {
+    path: "/blog-post",
+    name: "BlogPost",
+    component: BlogPostView,
+  },
   {
     path: "/universities",
     name: "universities",
