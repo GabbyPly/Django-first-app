@@ -83,7 +83,7 @@ export default {
 }
 .sign-up {
   display: flex;
-  margin: ;
+  /* margin: 1rem; */
   /* justify-content: space-evenly; */
   width: 60vw !important;
 }
