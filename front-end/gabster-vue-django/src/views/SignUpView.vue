@@ -9,6 +9,7 @@
 
     <v-col cols="12" sm="6">
       <v-text-field
+        v-model="password"
         :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
         :type="show2 ? 'text' : 'password'"
         name="input-10-2"
@@ -77,8 +78,9 @@ export default {
   methods: {
     async sendForm(data) {
       const { username, password } = data;
-      const res = await axios.post(`${api}/contacts/`, {
-        name: username,
+      console.log("sendForm ~ password", password);
+      const res = await axios.post(`${api}/users/`, {
+        username,
         password,
       });
       console.log("sendForm ~ res", res);
