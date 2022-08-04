@@ -19,17 +19,25 @@
         @click:append="show2 = !show2"
       ></v-text-field>
     </v-col>
+    <v-col cols="12" sm="6">
+      <v-text-field
+        :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
+        :type="show2 ? 'text' : 'password'"
+        name="input-10-2"
+        :rules="passwordRules"
+        label="Confirm password"
+        hint="At least 6 characters"
+        class="input-group--focused"
+        @click:append="show2 = !show2"
+      ></v-text-field>
+    </v-col>
     <v-btn
       :disabled="!valid"
       color="success"
       class="log-in mr-4"
       @click="validate"
     >
-      Log in
-    </v-btn>
-
-    <v-btn color="error" class="sign-up mr-4" @click="reset">
-      Don't have an account ? Sign-up
+      Submit
     </v-btn>
   </v-form>
 </template>
@@ -81,9 +89,9 @@ export default {
   color: green;
   width: 100vw !important;
 }
-.sign-up {
+/* .sign-up {
   display: flex;
-  /* justify-content: space-evenly; */
-  width: 60vw !important;
-}
+  width: 100vw !important;
+  justify-content: center !important;
+} */
 </style>

@@ -10,6 +10,9 @@ export default {
   name: "BasicButton",
   methods: {
     async getUniversities() {
+      console.log(process.env.SERVER_PORT);
+      const ax = await axios.get(`/contacts`);
+      console.log("getUniversities ~ ax", ax);
       const res = await axios.get(
         "http://universities.hipolabs.com/search?country=Israel"
       );

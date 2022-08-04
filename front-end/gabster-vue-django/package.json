@@ -3,7 +3,8 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vite preview",
+    "serve-orig": "vite preview",
+    "serve": "vue-cli-service serve",
     "build": "vite build",
     "lint": "vue-cli-service lint",
     "dev": "vite"

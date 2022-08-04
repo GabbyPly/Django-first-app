@@ -29,7 +29,7 @@
     </v-btn>
 
     <v-btn color="error" class="sign-up mr-4" @click="reset">
-      Don't have an account ? Sign-up
+      <router-link to="/sign-up"> Don't have an account ? Sign-up </router-link>
     </v-btn>
   </v-form>
 </template>
