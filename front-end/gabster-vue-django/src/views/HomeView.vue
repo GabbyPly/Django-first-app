@@ -44,18 +44,15 @@ export default {
     name: "",
     usernameRules: [
       (v) => {
-        console.log("username values", v);
         return v.length > 0 || "Error";
       },
     ],
     password: "Password",
     passwordRules: [
       (value) => {
-        console.log("value", value);
         return !!value || "Required.";
       },
       (v) => {
-        console.log("v", v);
         return v.length >= 8 || "Min 6 characters";
       },
       // emailMatch: () => `The email and password you entered don't match`,
