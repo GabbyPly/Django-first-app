@@ -33,3 +33,11 @@ class Contact(models.Model):
 
     class Meta:
         ordering = ["created"]
+
+
+class Post(models.Model):
+    created = models.DateTimeField(auto_now_add=True, blank=True)
+    title = models.CharField(max_length=255)
+
+    class Meta:
+        ordering = ["created"]

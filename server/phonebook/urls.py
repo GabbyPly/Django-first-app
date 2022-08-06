@@ -6,6 +6,7 @@ from phonebook import views
 
 router = DefaultRouter()
 router.register(r"contacts", views.ContactViewSet, basename="contact")
+router.register(r"posts", views.PostViewSet, basename="post")
 router.register(r"register", views.RegisterViewSet, basename="user")
 
 

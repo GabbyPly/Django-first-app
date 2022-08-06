@@ -1,8 +1,8 @@
 from multiprocessing import AuthenticationError
 
 from django.shortcuts import redirect
-from phonebook.models import Contact
-from phonebook.serializers import ContactSerializer, UserSerializer
+from phonebook.models import Contact, Post
+from phonebook.serializers import ContactSerializer, UserSerializer, PostSerializer
 from rest_framework import generics
 from django.contrib.auth.models import User
 from rest_framework import permissions
@@ -71,6 +71,26 @@ class ContactViewSet(LoginRequiredMixin, viewsets.ModelViewSet):
     queryset = Contact.objects.all()
     serializer_class = ContactSerializer
     permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
+
+    # Optional url_path argument
+    @action(detail=True, renderer_classes=[renderers.StaticHTMLRenderer])
+    def highlight(self, request, *args, **kwargs):
+        contact = self.get_object()
+        return Response(contact.highlighted)
+
+    def perform_create(self, serializer):
+        serializer.save(owner=self.request.user)
+
+
+class PostViewSet(viewsets.ModelViewSet):
+    """
+    This viewset automatically provides `list`, `create`, `retrieve`,
+    `update` and `destroy` actions.
+    """
+
+    queryset = Post.objects.all()
+    serializer_class = PostSerializer
+    # permission_classes = [permissions.IsAuthenticatedOrReadOnly, IsOwnerOrReadOnly]
 
     # Optional url_path argument
     @action(detail=True, renderer_classes=[renderers.StaticHTMLRenderer])

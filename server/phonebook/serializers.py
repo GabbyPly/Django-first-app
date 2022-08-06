@@ -1,6 +1,6 @@
 from asyncore import read
 from rest_framework import serializers
-from phonebook.models import Contact
+from phonebook.models import Contact, Post
 from django.contrib.auth.models import User
 
 
@@ -11,6 +11,16 @@ class ContactSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Contact
         fields = ["url", "id", "name", "linenos", "language", "style", "code", "owner", "highlight"]
+
+
+class PostSerializer(serializers.HyperlinkedModelSerializer):
+
+    # owner = serializers.ReadOnlyField(source="owner.username")
+    # highlight = serializers.HyperlinkedIdentityField(view_name="contact-highlight", format="html")
+
+    class Meta:
+        model = Post
+        fields = ["created", "title"]
 
 
 class UserSerializer(serializers.ModelSerializer):
