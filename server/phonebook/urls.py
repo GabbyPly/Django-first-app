@@ -7,7 +7,7 @@ from phonebook import views
 router = DefaultRouter()
 router.register(r"contacts", views.ContactViewSet, basename="contact")
 router.register(r"posts", views.PostViewSet, basename="post")
-router.register(r"register", views.RegisterViewSet, basename="user")
+router.register(r"users", views.UserViewSet, basename="user")
 
 
 # The API URLs are now determined automatically by the router.
