@@ -94,11 +94,8 @@ class PostViewSet(viewsets.ModelViewSet):
     serializer_class = PostSerializer
     permission_classes = (permissions.IsAuthenticated,)  # <-- And here
 
-    # # Optional url_path argument
-    # @action(detail=True, renderer_classes=[renderers.StaticHTMLRenderer])
-    # def highlight(self, request, *args, **kwargs):
-    #     contact = self.get_object()
-    #     return Response(contact.highlighted)
-
-    # def perform_create(self, serializer):
-    #     serializer.save(owner=self.request.user)
+    # Should this be here or on the serializer itself ? What's the difference
+    def perform_create(self, serializer):
+        post_instance = serializer.save(author=self.request.user)
+        print("post_instance", post_instance.title)
+        return Response(post_instance)
