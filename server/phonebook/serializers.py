@@ -13,17 +13,12 @@ class ContactSerializer(serializers.HyperlinkedModelSerializer):
         fields = ["url", "id", "name", "linenos", "language", "style", "code", "owner", "highlight"]
 
 
-class PostSerializer(serializers.HyperlinkedModelSerializer):
-
-    # owner = serializers.ReadOnlyField(source="owner.username")
-    # highlight = serializers.HyperlinkedIdentityField(view_name="contact-highlight", format="html")
-
+class PostSerializer(serializers.ModelSerializer):
     class Meta:
         model = Post
         fields = ["id", "created", "title", "content", "author"]
 
-
-class UserSerializer(serializers.ModelSerializer):
+    # owner = serializers.ReadOnlyField(source="owner.username")class UserSerializer(serializers.ModelSerializer):
     contacts = serializers.HyperlinkedRelatedField(many=True, view_name="contact-detail", read_only=True)
 
     class Meta:
