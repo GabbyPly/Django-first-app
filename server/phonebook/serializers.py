@@ -20,7 +20,7 @@ class PostSerializer(serializers.HyperlinkedModelSerializer):
 
     class Meta:
         model = Post
-        fields = ["created", "title"]
+        fields = ["id", "created", "title", "content"]
 
 
 class UserSerializer(serializers.ModelSerializer):
