@@ -37,8 +37,8 @@ class Contact(models.Model):
 
 class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True, blank=True)
-    title = models.CharField(max_length=255)
-    content = models.CharField(max_length=255)
+    title = models.CharField(max_length=255, default="My blog post")
+    content = models.CharField(max_length=255, default="Hello World, this is my blog post")
 
     class Meta:
         ordering = ["created"]
