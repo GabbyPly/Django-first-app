@@ -20,16 +20,11 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth import login
 
 
-class UserViewSet(viewsets.ReadOnlyModelViewSet):
-    """
-    This viewset automatically provides `list`, `retrieve` actions
-    """
+class UserViewSet(viewsets.ModelViewSet):
 
     queryset = User.objects.all()
     serializer_class = UserSerializer
-    # permission_classes = [
-    #     permissions.AllowAny,
-    # ]
+    # permission_classes = [permissions.AllowAny,]
 
 
 class LoginView(APIView):
