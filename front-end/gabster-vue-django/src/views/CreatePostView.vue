@@ -29,7 +29,7 @@
 </template>
 <script>
 export default {
-  name: "BlogPost",
+  name: "CreatePost",
   data: () => ({
     valid: false,
     PostTitle: "",

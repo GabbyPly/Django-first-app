@@ -3,6 +3,7 @@ import UniversitiesView from "../views/UniversitiesView.vue";
 import HomeView from "../views/HomeView.vue";
 import SignUpView from "../views/SignUpView.vue";
 import BlogPostView from "../views/BlogPostView.vue";
+import CreatePostView from "../views/CreatePostView.vue";
 
 const routes = [
   {
@@ -19,6 +20,11 @@ const routes = [
     path: "/blog-post",
     name: "BlogPost",
     component: BlogPostView,
+  },
+  {
+    path: "/create-post",
+    name: "CreatePost",
+    component: CreatePostView,
   },
   {
     path: "/universities",
