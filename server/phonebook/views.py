@@ -94,3 +94,17 @@ class PostViewSet(viewsets.ModelViewSet):
         post_instance = serializer.save(author=self.request.user)
         print("post_instance", post_instance.title)
         return Response(post_instance)
+
+    def list(self, request, *args, **kwargs):
+        print("request", request)
+        print("request.headers", request.headers)
+        queryset = self.get_queryset()
+        serializer = PostSerializer(queryset, many=True)
+        return Response(serializer.data)
+
+    def retrieve(self, request, *args, **kwargs):
+        print("self", self)
+        print("request", request)
+        instance = self.get_object()
+        serializer = self.get_serializer(instance)
+        return Response(serializer.data)
