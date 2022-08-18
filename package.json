@@ -1,0 +1,14 @@
+{
+    "name": "django-and-vue",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "cd ./front-end/gabster-vue-django && npm run gabster",
+        "gabster": "npm run dev",
+        "something": "should it be npm i && npm run dev ?",
+        "server": "npm i && npm run dev"
+    },
+    "dependencies": {
+        "concurrently": "^7.3.0"
+    }
+}
