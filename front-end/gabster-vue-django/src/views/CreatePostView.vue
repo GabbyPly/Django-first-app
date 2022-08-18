@@ -49,9 +49,7 @@ export default {
   }),
   methods: {
     async createPost() {
-      localStorage.setItem("token", "bfa710f5ef0b9728eeebe3079813c3056c2a1498");
       const token = localStorage.getItem("token");
-      // this will actually not get set here but in the log-in view
       const body = {
         title: this.PostTitle,
         content: this.postContent,

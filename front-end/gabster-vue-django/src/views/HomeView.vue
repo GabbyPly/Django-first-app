@@ -9,8 +9,9 @@
 
     <v-col cols="12" sm="6">
       <v-text-field
-        :append-icon="show2 ? 'mdi-eye' : 'mdi-eye-off'"
-        :type="show2 ? 'text' : 'password'"
+        v-model="password"
+        :append-icon="!show2 ? 'mdi-eye' : 'mdi-eye-off'"
+        :type="!show2 ? 'text' : 'password'"
         name="input-10-2"
         :rules="passwordRules"
         label="Password"
@@ -23,7 +24,10 @@
       :disabled="!valid"
       color="success"
       class="log-in mr-4"
-      @click="validate"
+      @click="
+        validate();
+        logIn();
+      "
     >
       Log in
     </v-btn>
@@ -35,6 +39,9 @@
 </template>
 
 <script>
+import axios from "axios";
+import consts from "../consts";
+const { api } = consts;
 export default {
   data: () => ({
     username: "",
@@ -47,7 +54,7 @@ export default {
         return v.length > 0 || "Error";
       },
     ],
-    password: "Password",
+    password: "",
     passwordRules: [
       (value) => {
         return !!value || "Required.";
@@ -60,6 +67,14 @@ export default {
   }),
 
   methods: {
+    async logIn() {
+      // const body = { username: this.username, password: this.password };
+      const body = { username: this.username, password: this.password };
+      console.log("logIn ~ body", body);
+      const res = await axios.post(`${api}/api-token-auth/`, body);
+      const token = res.data?.token;
+      localStorage.setItem("token", token);
+    },
     validate() {
       this.$refs.form.validate();
     },
