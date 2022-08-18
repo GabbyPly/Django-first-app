@@ -25,9 +25,12 @@
       </v-row>
     </v-container>
   </v-form>
-  <v-btn class="post-btn">Post</v-btn>
+  <v-btn @click="createPost" class="post-btn">Post</v-btn>
 </template>
 <script>
+import axios from "axios";
+import consts from "../consts";
+const { api } = consts;
 export default {
   name: "CreatePost",
   data: () => ({
@@ -44,6 +47,25 @@ export default {
       (v) => v.length <= 1000 || "Post body must be less than 10 characters",
     ],
   }),
+  methods: {
+    async createPost() {
+      localStorage.setItem("token", "bfa710f5ef0b9728eeebe3079813c3056c2a1498");
+      const token = localStorage.getItem("token");
+      // this will actually not get set here but in the log-in view
+      const body = {
+        title: this.PostTitle,
+        content: this.postContent,
+      };
+
+      const { data: post } = await axios.post(`${api}/posts/`, body, {
+        headers: { Authorization: `Bearer ${token}` },
+      });
+
+      console.log("createPost ~ post", post);
+      this.PostTitle = "";
+      this.postContent = "";
+    },
+  },
 };
 </script>
 

@@ -19,7 +19,7 @@ export default {
   name: "BlogPost",
   props: { blogPostList: Array }, // Currently isn't passed
   methods: {
-    async computedBlogPostList() {
+    async listBlogPosts() {
       localStorage.setItem("token", "0a022e3ab35ddfa5a1ed6c900a3491822dec6d66");
       // this will actually not get set here but in the log-in view
       const response = await axios.get(`${api}/posts`, {
@@ -44,7 +44,7 @@ export default {
   },
   created() {
     console.log("init ");
-    this.computedBlogPostList();
+    this.listBlogPosts();
   },
 };
 </script>
