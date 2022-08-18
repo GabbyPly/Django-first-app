@@ -99,7 +99,8 @@ class PostViewSet(viewsets.ModelViewSet):
         print("request.headers", request.headers)
         queryset = self.get_queryset()
         serializer = PostSerializer(queryset, many=True)
-        return Response(serializer.data)
+        response = {"posts": serializer.data}
+        return Response(response)
 
     def retrieve(self, request, *args, **kwargs):
         instance = self.get_object()
