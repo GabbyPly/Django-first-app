@@ -78,5 +78,6 @@ template {
 }
 .post-btn {
   background-color: green;
+  margin-left: 50vw;
 }
 </style>
