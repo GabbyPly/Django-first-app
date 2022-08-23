@@ -60,7 +60,6 @@ def results(request, question_id):
 
 def index(request):
     latest_question_list = Question.objects.order_by("-pub_date")[:5]
-    print("latest_question_list", latest_question_list)
     output = ", ".join([q.question_text for q in latest_question_list])
     return HttpResponse(output)
 
@@ -68,14 +67,7 @@ def index(request):
 def create_room(request):
     context = {}
     if request.method == "POST":
-        print("req", request)
-        print("method", request.method)
-        print("body", request.body)
-        print("content_type", request.content_type)
-        print("POST", request.POST)
-        # print("urlconf", request.urlconf) # causes error
         return render(request, "polls/room_form.html", context)
     elif request.method == "GET":
-        print("Hey world we're in get now")
         return render(request, "polls/room_form.html", context)
     return HttpResponse("What kinda method did they use ???")

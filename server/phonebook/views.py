@@ -29,14 +29,12 @@ class UserViewSet(viewsets.ModelViewSet):
 
 class LoginView(APIView):
     def post(self, request):
-        print("request", request)
         username = request.data["username"]
         password = request.data["password"]
         return_to = request.GET.get("return_to", None)
 
         # user = User.objects.get(email=email)
         user = User.objects.filter(username=username).first()
-        print("user", user)
 
         if user is None:
             raise AuthenticationFailed("User not found")
@@ -48,7 +46,6 @@ class LoginView(APIView):
         login(request, user)
         data = request.data
         if return_to is not None:
-            print("return to is", return_to)
             response = redirect(return_to)  # redirecting to home page
             return response
 
@@ -96,7 +93,6 @@ class PostViewSet(viewsets.ModelViewSet):
 
     def list(self, request, *args, **kwargs):
         print("request", request)
-        print("request.headers", request.headers)
         queryset = self.get_queryset()
         serializer = PostSerializer(queryset, many=True)
         response = {"posts": serializer.data}
