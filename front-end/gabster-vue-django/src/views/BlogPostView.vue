@@ -48,14 +48,20 @@ export default {
 </script>
 
 <style scoped>
-template {
-  /* align-content: center; */
-  /* display: flex;
-  justify-content: center; */
+.blog-post {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.post-content {
-  /* pass */
+
+.blog-post-title {
+  margin: 1rem;
 }
+
+.read-btn {
+  margin: 1rem;
+}
+
 .post-btn {
   background-color: green;
 }
