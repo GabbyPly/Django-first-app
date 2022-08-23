@@ -91,7 +91,7 @@ class PostViewSet(viewsets.ModelViewSet):
 
     # Should this be here or on the serializer itself ? What's the difference
     def perform_create(self, serializer):
-        post_instance = serializer.save(author=self.request.user)
+        post_instance = serializer.save(author_id=self.request.user, author_username=self.request.user.username)
         return Response(post_instance)
 
     def list(self, request, *args, **kwargs):

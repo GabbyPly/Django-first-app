@@ -39,7 +39,8 @@ class Post(models.Model):
     created = models.DateTimeField(auto_now_add=True, blank=True)
     title = models.CharField(max_length=255)
     content = models.CharField(max_length=255)
-    author = models.ForeignKey("auth.User", on_delete=models.CASCADE, blank=True)
+    author_username = models.CharField(max_length=255, blank=True)
+    author_id = models.ForeignKey("auth.User", on_delete=models.CASCADE, blank=True)
 
     class Meta:
         ordering = ["created"]
