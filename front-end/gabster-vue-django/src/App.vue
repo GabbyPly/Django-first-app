@@ -3,22 +3,12 @@
     <v-main>
       <div id="root">
         <Header />
-        <nav>
-          <router-link to="/home">Home</router-link> |
-          <router-link to="/blog-post">Blog posts</router-link> |
-          <router-link to="/create-post">Create a blog post</router-link> |
-          <router-link to="/universities">Universities</router-link> |
-          <router-link to="/about">About</router-link>
-          <img
-            style="margin-left: 1rem"
-            alt="Vue logo"
-            src="./assets/gabster-logo-small.png"
-          />
-        </nav>
-        <router-view />
       </div>
     </v-main>
   </v-app>
+  <footer>
+    <img alt="Gabster logo" src="./assets/gabster-logo-small.png" />
+  </footer>
 </template>
 
 <script>
@@ -35,7 +25,8 @@ export default {
 <style>
 #root {
   /* background-color: darksalmon; */
-  height: 90vh;
+  /* height: 90vh; */
+  min-height: 100vh;
 }
 
 footer {
@@ -62,5 +53,8 @@ nav a {
 
 nav a.router-link-exact-active {
   color: #42b983;
+}
+footer {
+  margin-top: auto;
 }
 </style>
