@@ -13,7 +13,6 @@ import consts from "../consts";
 import BlogPost from "./BlogPost.vue";
 export default {
   name: "BlogPostList",
-  //   props: { list: Array },
   methods: {
     async listBlogPosts() {
       const response = await axios.get(`${api}/posts`, {
@@ -21,16 +20,13 @@ export default {
       });
       this.posts = response.data.posts;
     },
-    displayBlogPost() {
-      return;
-    },
   },
   components: { BlogPost },
   data() {
     return { posts: [] };
   },
   created() {
-    console.log("blog post list created");
+    console.log("creating blog post list");
     this.listBlogPosts();
   },
 };

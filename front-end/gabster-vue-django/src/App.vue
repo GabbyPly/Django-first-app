@@ -27,10 +27,6 @@ export default {
 </script>
 
 <style>
-* {
-  /* background-color: rosybrown; */
-}
-
 #root {
   /* background-color: darksalmon; */
   height: 90vh;

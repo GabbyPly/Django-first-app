@@ -3,9 +3,7 @@
     <h3 class="blog-post-title">
       {{ contentToDisplay }}
     </h3>
-    <v-btn class="read-btn" @click="logBlogContent(blogPost.content)">{{
-      ReadBtnState
-    }}</v-btn>
+    <v-btn class="read-btn" @click="toggleDisplay">{{ ReadBtnState }}</v-btn>
     <h5>By {{ blogPost.author_username }}</h5>
   </div>
 </template>
@@ -18,15 +16,6 @@ export default {
     toggleDisplay() {
       this.displayTitle = !this.displayTitle;
     },
-    logBlogContent(content) {
-      // A different method called toggleDisplay should be called
-      console.log("log blog content", this.something);
-      this.displayTitle = !this.displayTitle;
-    },
-    displayBlogPost(blogPost) {
-      console.log("displayBlogPost ~ blogPost", blogPost);
-      return this.displayTitle ? blogPost.title : blogPost.content;
-    },
   },
   components: {},
   data() {
@@ -36,7 +25,6 @@ export default {
   },
   created() {
     console.log("init blogPost component");
-    // this.listBlogPosts();
   },
   computed: {
     contentToDisplay() {

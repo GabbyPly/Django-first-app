@@ -70,7 +70,6 @@ export default {
     async logIn() {
       // const body = { username: this.username, password: this.password };
       const body = { username: this.username, password: this.password };
-      console.log("logIn ~ body", body);
       const res = await axios.post(`${api}/api-token-auth/`, body);
       const token = res.data?.token;
       localStorage.setItem("token", token);
