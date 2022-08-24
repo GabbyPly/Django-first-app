@@ -1,5 +1,5 @@
 <template>
-  <div class="blog-post-list">
+  <div class="blog-post">
     <h3 class="blog-post-title">
       {{ contentToDisplay }}
     </h3>
@@ -42,22 +42,19 @@ export default {
       return this.displayTitle ? this.blogPost.title : this.blogPost.content;
     },
     ReadBtnState() {
-      return this.displayTitle ? "Read" : "Show blog post title";
+      return this.displayTitle ? "Read whole story" : "Show blog post title";
     },
   },
 };
 </script>
 
 <style scoped>
-.blog-post-list {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
 .blog-post {
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   align-items: center;
+  margin: 1rem;
+  border: solid;
 }
 
 .blog-post-title {

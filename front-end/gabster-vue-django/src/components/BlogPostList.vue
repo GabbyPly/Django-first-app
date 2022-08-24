@@ -36,22 +36,4 @@ export default {
 };
 </script>
 
-<style scoped>
-.blog-post {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.blog-post-title {
-  margin: 1rem;
-}
-
-.read-btn {
-  margin: 1rem;
-}
-
-.post-btn {
-  background-color: green;
-}
-</style>
+<style scoped></style>
