@@ -1,21 +1,18 @@
 <template>
   <div class="blog-post-list">
     <h3 class="blog-post-title">
-      {{ contentToDisplay || displayBlogPost(blogPost) || blogPost.title }}
+      {{ contentToDisplay }}
     </h3>
-    <v-btn class="read-btn" @click="logBlogContent(blogPost.content)"
-      >Read</v-btn
-    >
+    <v-btn class="read-btn" @click="logBlogContent(blogPost.content)">{{
+      ReadBtnState
+    }}</v-btn>
   </div>
 </template>
 
 <script>
-// import axios from "axios";
-// import consts from "../consts";
-// const { api } = consts;
 export default {
   name: "BlogPost",
-  props: { contentToDisplay: String },
+  props: { blogPost: Object },
   methods: {
     toggleDisplay() {
       this.displayTitle = !this.displayTitle;
@@ -39,6 +36,14 @@ export default {
   created() {
     console.log("init blogPost component");
     // this.listBlogPosts();
+  },
+  computed: {
+    contentToDisplay() {
+      return this.displayTitle ? this.blogPost.title : this.blogPost.content;
+    },
+    ReadBtnState() {
+      return this.displayTitle ? "Read" : "Show blog post title";
+    },
   },
 };
 </script>

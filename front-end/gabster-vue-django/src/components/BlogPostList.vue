@@ -1,7 +1,7 @@
 <template>
   <BlogPost
     v-for="blogPost in posts"
-    :contentToDisplay="blogPost.title"
+    :blogPost="blogPost"
     :key="`id_${blogPost.id}`"
   />
 </template>
