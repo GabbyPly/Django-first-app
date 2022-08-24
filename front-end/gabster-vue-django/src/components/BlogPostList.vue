@@ -1,11 +1,9 @@
 <template>
-  <!-- <div class="blog-post"> -->
   <BlogPost
     v-for="blogPost in posts"
     :contentToDisplay="blogPost.title"
     :key="`id_${blogPost.id}`"
   />
-  <!-- </div> -->
 </template>
 
 <script>
@@ -21,7 +19,6 @@ export default {
       const response = await axios.get(`${api}/posts`, {
         headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
       });
-      console.log("listBlogPosts ~ response", response);
       this.posts = response.data.posts;
     },
     displayBlogPost() {
@@ -35,7 +32,6 @@ export default {
   created() {
     console.log("blog post list created");
     this.listBlogPosts();
-    // call the listBlogPosts function ?
   },
 };
 </script>

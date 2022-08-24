@@ -21,10 +21,9 @@ export default {
       this.displayTitle = !this.displayTitle;
     },
     logBlogContent(content) {
-      console.log({ content });
       // A different method called toggleDisplay should be called
+      console.log("log blog content", this.something);
       this.displayTitle = !this.displayTitle;
-      console.log("something", this.something);
     },
     displayBlogPost(blogPost) {
       console.log("displayBlogPost ~ blogPost", blogPost);

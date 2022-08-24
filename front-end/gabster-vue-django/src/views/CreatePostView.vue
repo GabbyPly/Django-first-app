@@ -55,11 +55,9 @@ export default {
         content: this.postContent,
       };
 
-      const { data: post } = await axios.post(`${api}/posts/`, body, {
+      /* const { data: post } = */ await axios.post(`${api}/posts/`, body, {
         headers: { Authorization: `Bearer ${token}` },
       });
-
-      console.log("createPost ~ post", post);
       this.PostTitle = "";
       this.postContent = "";
     },
@@ -68,14 +66,6 @@ export default {
 </script>
 
 <style scoped>
-template {
-  /* align-content: center; */
-  /* display: flex;
-  justify-content: center; */
-}
-.post-content {
-  /* pass */
-}
 .post-btn {
   background-color: green;
   margin-left: 50vw;

@@ -78,16 +78,13 @@ export default {
   methods: {
     async sendForm(data) {
       const { username, password } = data;
-      console.log("sendForm ~ password", password);
       const res = await axios.post(`${api}/users/`, {
         username,
         password,
       });
-      console.log("sendForm ~ res", res);
       return res.data;
     },
     validate() {
-      console.log("in validate");
       this.$refs.form.validate();
     },
     reset() {
@@ -105,9 +102,4 @@ export default {
   color: green;
   width: 100vw !important;
 }
-/* .sign-up {
-  display: flex;
-  width: 100vw !important;
-  justify-content: center !important;
-} */
 </style>
