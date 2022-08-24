@@ -6,6 +6,7 @@
     <v-btn class="read-btn" @click="logBlogContent(blogPost.content)">{{
       ReadBtnState
     }}</v-btn>
+    <h5>By {{ blogPost.author_username }}</h5>
   </div>
 </template>
 
