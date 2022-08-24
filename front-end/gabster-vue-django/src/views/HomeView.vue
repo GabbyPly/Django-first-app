@@ -41,6 +41,7 @@
 <script>
 import axios from "axios";
 import consts from "../consts";
+import router from "../router";
 const { api } = consts;
 export default {
   data: () => ({
@@ -73,6 +74,7 @@ export default {
       const res = await axios.post(`${api}/api-token-auth/`, body);
       const token = res.data?.token;
       localStorage.setItem("token", token);
+      router.push("blog-post");
     },
     validate() {
       this.$refs.form.validate();
