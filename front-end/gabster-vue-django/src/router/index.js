@@ -4,6 +4,7 @@ import HomeView from "../views/HomeView.vue";
 import SignUpView from "../views/SignUpView.vue";
 import BlogPostView from "../views/BlogPostView.vue";
 import CreatePostView from "../views/CreatePostView.vue";
+import LogOutView from "../views/LogOutView.vue";
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: "/universities",
     name: "universities",
     component: UniversitiesView,
+  },
+  {
+    path: "/log-out",
+    name: "LogOut",
+    component: LogOutView,
   },
   {
     path: "/about",
