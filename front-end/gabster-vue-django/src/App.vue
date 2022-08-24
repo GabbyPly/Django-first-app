@@ -2,14 +2,18 @@
   <v-app>
     <v-main>
       <div id="root">
-        <h1>Hello World - later changed to Header component</h1>
+        <Header />
         <nav>
           <router-link to="/home">Home</router-link> |
           <router-link to="/blog-post">Blog posts</router-link> |
           <router-link to="/create-post">Create a blog post</router-link> |
           <router-link to="/universities">Universities</router-link> |
           <router-link to="/about">About</router-link>
-          <img alt="Vue logo" src="./assets/logo.png" />
+          <img
+            style="margin-left: 1rem"
+            alt="Vue logo"
+            src="./assets/gabster-logo-small.png"
+          />
         </nav>
         <router-view />
       </div>
@@ -18,11 +22,13 @@
 </template>
 
 <script>
+import Header from "./components/Header.vue";
 export default {
   name: "App",
   // data() {
   //   return {}; // Should all components have data ? or is in not mandatory
   // },
+  components: { Header },
 };
 </script>
 
