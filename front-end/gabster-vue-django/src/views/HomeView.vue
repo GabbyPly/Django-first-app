@@ -69,12 +69,15 @@ export default {
 
   methods: {
     async logIn() {
+      console.log("logIn", this);
       // const body = { username: this.username, password: this.password };
       const body = { username: this.username, password: this.password };
       const res = await axios.post(`${api}/api-token-auth/`, body);
       const token = res.data?.token;
       localStorage.setItem("token", token);
-      router.push("blog-post");
+      // On one hand it makes sense to be re-directed.
+      // But didn't figure out how to make this work with return_to yet
+      // router.push("blog-post");
     },
     validate() {
       this.$refs.form.validate();

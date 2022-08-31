@@ -5,8 +5,9 @@ import SignUpView from "../views/SignUpView.vue";
 import BlogPostView from "../views/BlogPostView.vue";
 import CreatePostView from "../views/CreatePostView.vue";
 import LogOutView from "../views/LogOutView.vue";
+import Guards from "./routerGaurds";
 
-const routes = [
+const allowedWithoutAuthRoutes = [
   {
     path: "/home",
     name: "home",
@@ -17,6 +18,9 @@ const routes = [
     name: "SignUp",
     component: SignUpView,
   },
+];
+
+const requiredAuthRoutes = [
   {
     path: "/blog-post",
     name: "BlogPost",
@@ -48,9 +52,34 @@ const routes = [
   },
 ];
 
+function setRoutesAuthRequirements() {
+  const routes = [];
+  routes.push(
+    ...allowedWithoutAuthRoutes.map((x) => addRequiredAuth(x, false))
+  );
+  routes.push(...requiredAuthRoutes.map((x) => addRequiredAuth(x, true)));
+  return routes;
+}
+
+function addRequiredAuth(route, value) {
+  if (route.meta) {
+    route.meta.requiresAuth = value;
+  } else {
+    route.meta = { requiresAuth: value };
+  }
+  console.log("addRequiredAuth ~ route", route);
+  return route;
+}
+
+const routes = setRoutesAuthRequirements();
+console.log("Global routes", routes);
+
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
   routes,
+  // routes,
 });
+
+router.beforeEach(Guards.guardLoggedIn);
 
 export default router;
