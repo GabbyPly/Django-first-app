@@ -67,12 +67,10 @@ function addRequiredAuth(route, value) {
   } else {
     route.meta = { requiresAuth: value };
   }
-  console.log("addRequiredAuth ~ route", route);
   return route;
 }
 
 const routes = setRoutesAuthRequirements();
-console.log("Global routes", routes);
 
 const router = createRouter({
   history: createWebHistory(process.env.BASE_URL),
