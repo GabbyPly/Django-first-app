@@ -10,8 +10,14 @@ import Guards from "./routerGaurds";
 const allowedWithoutAuthRoutes = [
   {
     path: "/home",
+    // path: "/home/:id",
     name: "home",
     component: HomeView,
+    props: (route) => {
+      console.log("route!!!", route);
+      return { return_to: route?.redirectedFrom?.fullPath };
+      // return { return_to: route.query.token };
+    },
   },
   {
     path: "/sign-up",

@@ -66,10 +66,12 @@ export default {
       // emailMatch: () => `The email and password you entered don't match`,
     ],
   }),
-
+  props: { return_to: String },
   methods: {
     async logIn() {
       console.log("logIn", this);
+      console.log({ route: this.$route, params: this.$route.params });
+
       // const body = { username: this.username, password: this.password };
       const body = { username: this.username, password: this.password };
       const res = await axios.post(`${api}/api-token-auth/`, body);
@@ -77,7 +79,9 @@ export default {
       localStorage.setItem("token", token);
       // On one hand it makes sense to be re-directed.
       // But didn't figure out how to make this work with return_to yet
-      // router.push("blog-post");
+      const { return_to } = this.$route.query;
+      console.log({ return_to });
+      router.push(return_to);
     },
     validate() {
       this.$refs.form.validate();
