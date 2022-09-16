@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "vue-cli-service lint",
     "dev": "vite",
-    "gabster": "concurrently \"cd ../../server && python3 manage.py runserver\" \"npm run dev\"",
+    "simol": "concurrently \"cd ../../server && python3 manage.py runserver\" \"npm run dev\"",
     "con": "(cd ../../server && python3 manage.py runserver) & npm run dev",
     "djkill": "npx kill-port 8000"
   },

@@ -3,9 +3,7 @@
     "version": "0.1.0",
     "private": true,
     "scripts": {
-        "dev": "cd ./front-end/gabster-vue-django && npm run gabster",
-        "gabster": "npm run dev",
-        "something": "should it be npm i && npm run dev ?",
+        "dev": "cd ./front-end/gabster-vue-django && npm run simol",
         "server": "npm i && npm run dev"
     },
     "dependencies": {
