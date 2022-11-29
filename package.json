@@ -7,6 +7,17 @@
         "server": "npm i && npm run dev"
     },
     "dependencies": {
-        "concurrently": "^7.3.0"
+        "@codemirror/commands": "^6.1.2",
+        "@codemirror/lang-javascript": "^6.1.1",
+        "@codemirror/theme-one-dark": "^6.1.0",
+        "@codemirror/view": "^6.6.0",
+        "codemirror": "^6.0.1",
+        "concurrently": "^7.3.0",
+        "dedent": "^0.7.0",
+        "sass-loader": "^13.2.0",
+        "vue-codemirror": "^4.0.6"
+    },
+    "devDependencies": {
+        "sass": "^1.56.1"
     }
 }
