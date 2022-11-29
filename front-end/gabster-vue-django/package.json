@@ -13,6 +13,7 @@
     "djkill": "npx kill-port 8000"
   },
   "dependencies": {
+    "@codemirror/lang-javascript": "^6.1.1",
     "@fortawesome/fontawesome-svg-core": "^6.1.2",
     "@fortawesome/free-brands-svg-icons": "^6.1.2",
     "@fortawesome/free-regular-svg-icons": "^6.1.2",
@@ -20,6 +21,7 @@
     "@fortawesome/vue-fontawesome": "^3.0.1",
     "@mdi/font": "5.9.55",
     "axios": "^0.27.2",
+    "codemirror": "^5.65.10",
     "concurrently": "^7.3.0",
     "core-js": "^3.8.3",
     "lodash": "^4.17.21",

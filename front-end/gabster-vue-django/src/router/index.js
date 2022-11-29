@@ -5,6 +5,7 @@ import SignUpView from "../views/SignUpView.vue";
 import BlogPostView from "../views/BlogPostView.vue";
 import CreatePostView from "../views/CreatePostView.vue";
 import LogOutView from "../views/LogOutView.vue";
+import CodeMirrorView from "../views/CodeMirrorView.vue";
 import Guards from "./routerGaurds";
 
 const allowedWithoutAuthRoutes = [
@@ -46,6 +47,11 @@ const requiredAuthRoutes = [
     path: "/log-out",
     name: "LogOut",
     component: LogOutView,
+  },
+  {
+    path: "/code-mirror",
+    name: "CodeMirror",
+    component: CodeMirrorView,
   },
   {
     path: "/about",
